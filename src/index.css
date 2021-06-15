@@ -26,6 +26,42 @@ code {
     monospace;
 }
 
+.allCountriesPage {
+  color: black;
+}
+
+.bannerCountry {
+  color: black;
+}
+
+.allCountriesText {
+  color: black;
+}
+
+.allCountriesContainer {
+  color: black;
+}
+
+.singleCountryPage {
+  color: black;
+}
+
+.countryAllExtraContainer {
+  color: black;
+}
+
+.countryExtraContainer {
+  color: black;
+}
+
+.extraInfoNumber {
+  color: black;
+}
+
+.extraInfoText {
+  color: black;
+}
+
 .countryCard {
   color: black;
 }
@@ -39,5 +75,9 @@ code {
 }
 
 .countryCardCasesNumber {
+  color: black;
+}
+
+.statisticsGraph {
   color: black;
 }

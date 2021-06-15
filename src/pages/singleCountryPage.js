@@ -1,20 +1,20 @@
-import CountryCard from "../components/countryCard"
-import StatisticsGraph from "../components/statisticsGraph"
+import CountryCard from '../components/countryCard';
+import StatisticsGraph from '../components/statisticsGraph';
 
+const SingleCountryPage = () => (
+  <div className="singleCountryPage">
+    <CountryCard className="bannerCountry" />
+    <StatisticsGraph />
+    <div className="countryAllExtraContainer">
 
-const SingleCountryPage = () => {
+      <div className="countryExtraContainer">
+        <h1 className="extraInfoNumber">9999</h1>
+        <p className="extraInfoText">some information</p>
+      </div>
 
+    </div>
 
-    return (
-        <div className="singleCountryPage">
-            <CountryCard className="bannerCountry" />
-            <StatisticsGraph />
-            <div className="countryExtraContainer">
+  </div>
+);
 
-            </div>
-
-        </div>
-    )
-}
-
-export default SingleCountryPage
+export default SingleCountryPage;

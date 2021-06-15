@@ -1,12 +1,7 @@
+const StatisticsGraph = () => (
+  <div className="statisticsGraph">
+    I am the statistics graph.
+  </div>
+);
 
-
-const StatisticsGraph = () => {
-
-    return(
-        <div className="statisticsGraph">
-            I am the statistics graph.
-        </div>
-    )
-}
-
-export default StatisticsGraph
+export default StatisticsGraph;
