@@ -3,6 +3,7 @@ import StatisticsGraph from '../components/statisticsGraph';
 
 const SingleCountryPage = () => (
   <div className="singleCountryPage">
+    <h1>Go back to All Countries Statistics</h1>
     <CountryCard className="bannerCountry" />
     <StatisticsGraph />
     <div className="countryAllExtraContainer">
