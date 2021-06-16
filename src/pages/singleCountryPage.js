@@ -1,8 +1,11 @@
 import CountryCard from '../components/countryCard';
 import StatisticsGraph from '../components/statisticsGraph';
+import Header from '../components/header';
 
 const SingleCountryPage = () => (
   <div className="singleCountryPage">
+    <Header />
+
     <h1>Go back to All Countries Statistics</h1>
     <CountryCard className="bannerCountry" />
     <StatisticsGraph />
