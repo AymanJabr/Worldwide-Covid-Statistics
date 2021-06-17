@@ -22,6 +22,6 @@ const getItems = async () => {
   return items;
 };
 
-// getItems()
+// getItems();
 
 export default getItems;
