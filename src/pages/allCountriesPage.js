@@ -1,11 +1,14 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import CountryCard from '../components/countryCard';
 import Header from '../components/header';
 import getItems from '../APIs/apify';
 
 const AllCountriesPage = () => {
+
+  const [statistics,setStatistics] = useState([])
+
   useEffect(() => {
-    getItems();
+    setStatistics(getItems());
   }, []);
 
   return (
