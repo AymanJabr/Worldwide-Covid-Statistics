@@ -15,9 +15,9 @@ const getItems = async () => {
   console.log('Results from dataset');
   const { items } = await client.dataset(run.defaultDatasetId).listItems();
   //   console.log(items);
-  items.forEach((item) => {
-    console.dir(item);
-  });
+  // items.forEach((item) => {
+  //   console.dir(item);
+  // });
 
   return items;
 };

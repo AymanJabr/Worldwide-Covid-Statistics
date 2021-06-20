@@ -4,11 +4,12 @@ import Header from '../components/header';
 import getItems from '../APIs/apify';
 
 const AllCountriesPage = () => {
-
-  const [statistics,setStatistics] = useState([])
+  const [statistics, setStatistics] = useState([]);
 
   useEffect(() => {
-    setStatistics(getItems());
+    getItems().then((newStatistics) => {
+      setStatistics(newStatistics);
+    });
   }, []);
 
   return (
@@ -17,8 +18,15 @@ const AllCountriesPage = () => {
       <CountryCard className="bannerCountry" />
       <p className="allCountriesText">All countries</p>
       <div className="allCountriesContainer">
-        {/* Some kind of for loop */}
-        <CountryCard />
+        {console.log(statistics)}
+        {statistics.length > 0 ? statistics.map((stat) => (
+          <h1
+            key={stat.country}
+          >
+            {stat.country}
+          </h1>
+        )) : <h1>Loading data....</h1> }
+        {/* <CountryCard /> */}
       </div>
     </div>
   );
