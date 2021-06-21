@@ -20,13 +20,14 @@ const AllCountriesPage = () => {
       <div className="allCountriesContainer">
         {console.log(statistics)}
         {statistics.length > 0 ? statistics.map((stat) => (
-          <h1
+          <CountryCard
             key={stat.country}
-          >
-            {stat.country}
-          </h1>
-        )) : <h1>Loading data....</h1> }
-        {/* <CountryCard /> */}
+            country={stat.country}
+            infected={stat.infected}
+            deceased={stat.deceased}
+            recovered={stat.recovered}
+          />
+        )) : <h1>Loading most recent data....</h1> }
       </div>
     </div>
   );
