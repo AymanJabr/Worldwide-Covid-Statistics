@@ -16,7 +16,7 @@ function App() {
     <main>
       <Switch>
         <Route path="/" component={AllCountriesPage} exact />
-        <Route path="/country" component={SingleCountryPage} exact />
+        <Route path="/:country" component={SingleCountryPage} exact />
       </Switch>
     </main>
   );
