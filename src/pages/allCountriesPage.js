@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import CountryCard from '../components/countryCard';
-import Header from '../components/header';
 import getItems from '../APIs/apify';
 
 const AllCountriesPage = () => {
@@ -14,7 +13,6 @@ const AllCountriesPage = () => {
 
   return (
     <div className="allCountriesPage">
-      <Header />
       <CountryCard className="bannerCountry" />
       <p className="allCountriesText">All countries</p>
       <div className="allCountriesContainer">
