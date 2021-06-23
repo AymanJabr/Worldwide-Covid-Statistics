@@ -21,8 +21,8 @@ const CountryCard = (props) => {
 };
 
 CountryCard.propTypes = {
-  country: PropTypes.string.isRequired,
-  infected: PropTypes.number.isRequired,
+  country: PropTypes.string,
+  infected: PropTypes.number,
   deceased: PropTypes.number,
   recovered: PropTypes.number,
 
@@ -31,6 +31,8 @@ CountryCard.propTypes = {
 CountryCard.defaultProps = {
   deceased: null,
   recovered: null,
+  country: null,
+  infected: null
 };
 
 export default CountryCard;

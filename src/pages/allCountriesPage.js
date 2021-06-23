@@ -1,13 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import store from '../store';
+import { actionUpdate } from '../actions';
 import CountryCard from '../components/countryCard';
 import getItems from '../APIs/apify';
 
-const AllCountriesPage = () => {
-  const [statistics, setStatistics] = useState([]);
+const AllCountriesPage = ({ statistics }) => {
 
   useEffect(() => {
     getItems().then((newStatistics) => {
-      setStatistics(newStatistics);
+      store.dispatch(actionUpdate(newStatistics));
     });
   }, []);
 
@@ -31,4 +34,10 @@ const AllCountriesPage = () => {
   );
 };
 
-export default AllCountriesPage;
+AllCountriesPage.propTypes = {
+  statistics: PropTypes.instanceOf(Array).isRequired,
+};
+
+const mapStateToProps = (state) => ({ statistics: state.statisticsReducer.statistics });
+
+export default connect(mapStateToProps)(AllCountriesPage);

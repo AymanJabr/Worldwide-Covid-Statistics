@@ -1,30 +1,17 @@
-// To be completely changed
-
-import { CREATE_BOOK, REMOVE_BOOK } from '../actions/index';
+import { GET_UPDATED_STATISTICS } from '../actions/index';
 
 const initialState = {
-  books: [],
+  statistics: [],
 };
 
 export default function statisticsReducer(state = initialState, action) {
   switch (action.type) {
-    case CREATE_BOOK:
+    case GET_UPDATED_STATISTICS:
 
       return {
-        books: [
-          ...state.books,
-          {
-            id: action.book.id,
-            title: action.book.title,
-            category: action.book.category,
-          },
-        ],
-      };
+        statistics:
+          action.statistics,
 
-    case REMOVE_BOOK:
-
-      return {
-        books: [...state.books.filter((book) => action.book.id !== book.id)],
       };
 
     default:
