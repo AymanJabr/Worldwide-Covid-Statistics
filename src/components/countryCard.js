@@ -32,7 +32,7 @@ CountryCard.defaultProps = {
   deceased: null,
   recovered: null,
   country: null,
-  infected: null
+  infected: null,
 };
 
 export default CountryCard;

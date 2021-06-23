@@ -5,9 +5,9 @@ import store from '../store';
 import { actionUpdate } from '../actions';
 import CountryCard from '../components/countryCard';
 import getItems from '../APIs/apify';
+import SearchBar from '../components/searchBar';
 
 const AllCountriesPage = ({ statistics }) => {
-
   useEffect(() => {
     getItems().then((newStatistics) => {
       store.dispatch(actionUpdate(newStatistics));
@@ -16,8 +16,7 @@ const AllCountriesPage = ({ statistics }) => {
 
   return (
     <div className="allCountriesPage">
-      <CountryCard className="bannerCountry" />
-      <p className="allCountriesText">All countries</p>
+      <SearchBar />
       <div className="allCountriesContainer">
         {console.log(statistics)}
         {statistics.length > 0 ? statistics.map((stat) => (

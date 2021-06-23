@@ -10,7 +10,6 @@ const input = {};
 const getItems = async () => {
   const run = await client.actor('petrpatek/covid-19-aggregator').call(input);
 
-  console.log('Results from dataset');
   const { items } = await client.dataset(run.defaultDatasetId).listItems();
 
   return items;
