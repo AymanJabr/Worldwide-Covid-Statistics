@@ -34,6 +34,8 @@ To get a local copy up and running follow these steps.
 
 ## Testing
 
+Testing has been done using jest, both unit tests and integration tests are included in this project and can be run using `npm test`.
+
 # To be updated
 
 ## AUTHORS
