@@ -8,14 +8,19 @@ const CountryCard = (props) => {
 
   return (
     <div className="countryCard">
-      <img
-        src={`./countries_flags/${country}.png`}
-        className="countryCardImage"
-        alt="country"
-      />
-      <h1 className="countryCardName">{country}</h1>
-      <p className="countryCardCasesNumber">{infected}</p>
-      <Link to="/country" deceased={deceased} infected={infected} recovered={recovered}>Country of Card</Link>
+      <Link to={`/country/${country}`} deceased={deceased} infected={infected} recovered={recovered}>
+        <img
+          src={`./countries_flags/${country}.png`}
+          className="countryCardImage"
+          alt="country"
+        />
+        <h1 className="countryCardName">{country}</h1>
+        <p className="countryCardCasesNumber">
+          active cases:
+          {` ${infected.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
+        </p>
+        See all country statistics
+      </Link>
     </div>
   );
 };

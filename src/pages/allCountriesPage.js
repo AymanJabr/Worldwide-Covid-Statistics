@@ -6,6 +6,7 @@ import { actionUpdate } from '../actions';
 import CountryCard from '../components/countryCard';
 import getItems from '../APIs/apify';
 import SearchBar from '../components/searchBar';
+import '../index.css';
 
 const AllCountriesPage = ({ statistics }) => {
   useEffect(() => {
