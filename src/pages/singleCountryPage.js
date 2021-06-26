@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -8,17 +8,17 @@ import Header from '../components/header';
 
 const SingleCountryPage = ({ statistics }) => {
   const { country } = useParams();
-  let infected = -1;
-  let deceased = -1;
-  let recovered = -1;
+  const [infected, setInfected] = useState(-1);
+  const [deceased, setDeceased] = useState(-1);
+  const [recovered, setRecovered] = useState(-1);
 
   useEffect(() => {
     console.log(statistics);
     const myCountry = statistics.filter((statistic) => statistic.country === country);
     console.log(myCountry);
-    infected = myCountry[0].infected;
-    deceased = myCountry[0].deceased;
-    recovered = myCountry[0].recovered;
+    setInfected(myCountry[0].infected);
+    setDeceased(myCountry[0].deceased);
+    setRecovered(myCountry[0].recovered);
     console.log(myCountry[0].infected);
     console.log(infected);
   }, []);
@@ -28,6 +28,7 @@ const SingleCountryPage = ({ statistics }) => {
       <Header />
 
       {console.log(country)}
+      {console.log(infected)}
 
       <CountryCard className="bannerCountry" country={country} deceased={deceased} infected={infected} recovered={recovered} />
       <StatisticsGraph />
