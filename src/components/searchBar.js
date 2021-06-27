@@ -1,7 +1,12 @@
 function SearchBar() {
   return (
     <div className="SearchBar">
-      <h1>I am the search bar.</h1>
+      <input
+        type="text"
+        id="header-search"
+        placeholder="Search country"
+        name="header"
+      />
 
     </div>
   );
