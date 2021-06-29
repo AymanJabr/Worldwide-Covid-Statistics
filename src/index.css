@@ -24,6 +24,45 @@ a:hover, a:visited, a:link, a:active
     text-decoration: none;
 }
 
+
+.SearchBar {
+  margin-top: 3vh;
+  position: relative;
+  display: flex;
+  min-width: 100px;
+
+}
+
+.SearchIcon {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 14px;
+
+}
+
+
+.Search {
+  border: 1px solid grey;
+  border-radius: 5px;
+  height: 25px;
+  width: 100%;
+  padding: 2px 23px 2px 30px;
+  outline: 0;
+  background-color: rgba(253, 242, 224, 0.644);
+}
+
+.Search:hover, .Search:focus {
+  border: 1px solid #009688;
+  background-color: white;
+}
+
+
+
+
+
+
+
 code {
   font-family:
     source-code-pro,
