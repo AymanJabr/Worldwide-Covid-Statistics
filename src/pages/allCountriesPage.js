@@ -9,7 +9,7 @@ import SearchBar from '../components/searchBar';
 import '../index.css';
 
 const AllCountriesPage = ({ statistics }) => {
-  const [myStatistics, setMyStatistics] = useState([]);
+  const [myStatistics, setMyStatistics] = useState(statistics);
 
   useEffect(() => {
     getItems().then((newStatistics) => {

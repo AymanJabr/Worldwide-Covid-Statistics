@@ -13,34 +13,35 @@ const SingleCountryPage = ({ statistics }) => {
   const [recovered, setRecovered] = useState(-1);
 
   useEffect(() => {
+    // const myCountry = statistics.filter((statistic) => statistic.country === country);
     console.log(statistics);
-    const myCountry = statistics.filter((statistic) => statistic.country === country);
-    console.log(myCountry);
-    setInfected(myCountry[0].infected);
-    setDeceased(myCountry[0].deceased);
-    setRecovered(myCountry[0].recovered);
-    console.log(myCountry[0].infected);
-    console.log(infected);
+    // setInfected(myCountry[0].infected);
+    // setDeceased(myCountry[0].deceased);
+    // setRecovered(myCountry[0].recovered);
+    setInfected(-1);
+    setDeceased(-1);
+    setRecovered(-1);
   }, []);
 
   return (
     <div className="singleCountryPage">
       <Header />
 
-      {console.log(country)}
-      {console.log(infected)}
-
-      <CountryCard className="bannerCountry" country={country} deceased={deceased} infected={infected} recovered={recovered} />
+      <CountryCard className="bannerCountry" banner country={country} deceased={deceased} infected={infected} recovered={recovered} />
       <StatisticsGraph />
       <div className="countryAllExtraContainer">
 
         <div className="countryExtraContainer">
-          <h1 className="extraInfoNumber">{recovered}</h1>
+          <h1 className="extraInfoNumber">
+            {` ${recovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
+          </h1>
           <p className="extraInfoText">recovered</p>
         </div>
 
         <div className="countryExtraContainer">
-          <h1 className="extraInfoNumber">{deceased}</h1>
+          <h1 className="extraInfoNumber">
+            {` ${deceased.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
+          </h1>
           <p className="extraInfoText">deceased</p>
         </div>
 
