@@ -19,18 +19,18 @@ body {
   margin-bottom: 10vh;
 }
 
-a:hover, a:visited, a:link, a:active
-{
-    text-decoration: none;
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
 }
-
 
 .SearchBar {
   margin-top: 3vh;
   position: relative;
   display: flex;
   min-width: 100px;
-
 }
 
 .SearchIcon {
@@ -38,9 +38,7 @@ a:hover, a:visited, a:link, a:active
   top: 8px;
   left: 8px;
   width: 14px;
-
 }
-
 
 .Search {
   border: 1px solid grey;
@@ -52,11 +50,11 @@ a:hover, a:visited, a:link, a:active
   background-color: rgba(253, 242, 224, 0.644);
 }
 
-.Search:hover, .Search:focus {
+.Search:hover,
+.Search:focus {
   border: 1px solid #009688;
   background-color: white;
 }
-
 
 code {
   font-family:
@@ -113,32 +111,26 @@ code {
   background-color: blanchedalmond;
   padding: 10px;
   border-radius: 7px;
-
-
-
   -webkit-transition: all 0.25s linear;
   -moz-transition: all 0.25s linear;
   -o-transition: all 0.25s linear;
   transition: all 0.25s linear;
 }
 
-.countryCard:hover{
+.countryCard:hover {
   border-radius: 10px;
   border: 1px solid rgba(164, 159, 235, 0.347);
-  -webkit-box-shadow: 0px 11px 35px -7px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 11px 35px -7px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 11px 35px -7px rgba(0, 0, 0, 0.75);
-
+  -webkit-box-shadow: 0 11px 35px -7px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 11px 35px -7px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 11px 35px -7px rgba(0, 0, 0, 0.75);
   transform: scale(1.1) translateX(-1vw);
 }
-
 
 .countryCardImage {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 70%;
-  
 }
 
 .countryCardName {
