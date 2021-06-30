@@ -1,4 +1,6 @@
-function SearchBar() {
+import PropTypes from 'prop-types';
+
+function SearchBar({ searchCountry }) {
   return (
     <div className="SearchBar">
 
@@ -10,11 +12,16 @@ function SearchBar() {
         placeholder="Search country"
         name="header"
         className="Search"
+        onChange={searchCountry}
       />
 
     </div>
 
   );
 }
+
+SearchBar.propTypes = {
+  searchCountry: PropTypes.func.isRequired,
+};
 
 export default SearchBar;
