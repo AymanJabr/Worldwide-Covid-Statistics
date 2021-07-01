@@ -13,8 +13,9 @@ const AllCountriesPage = ({ statistics }) => {
 
   useEffect(() => {
     getItems().then((newStatistics) => {
-      store.dispatch(actionUpdate(newStatistics));
-      setMyStatistics(newStatistics);
+      const newSortedStatistics = newStatistics.sort((a, b) => b.infected - a.infected);
+      store.dispatch(actionUpdate(newSortedStatistics));
+      setMyStatistics(newSortedStatistics);
     });
   }, []);
 
