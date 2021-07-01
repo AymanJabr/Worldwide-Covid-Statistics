@@ -22,22 +22,28 @@ const SingleCountryPage = ({ statistics }) => {
     <div className="singleCountryPage">
       <Header />
 
-      <CountryCard className="bannerCountry" banner country={country} deceased={deceased} infected={infected} recovered={recovered} />
+      <CountryCard
+        banner
+        country={country}
+        deceased={deceased}
+        infected={infected}
+        recovered={recovered}
+      />
 
       <div className="countryAllExtraContainer">
 
         <div className="countryExtraContainer">
+          <p className="extraInfoText">recovered</p>
           <h1 className="extraInfoNumber">
             {` ${recovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
           </h1>
-          <p className="extraInfoText">recovered</p>
         </div>
 
         <div className="countryExtraContainer">
+          <p className="extraInfoText">deceased</p>
           <h1 className="extraInfoNumber">
             {` ${deceased.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
           </h1>
-          <p className="extraInfoText">deceased</p>
         </div>
 
       </div>

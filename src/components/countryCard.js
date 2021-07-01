@@ -7,7 +7,7 @@ const CountryCard = (props) => {
   } = props;
 
   return (
-    <div className="countryCard">
+    <div className={`countryCard ${banner ? 'bannerCountry' : ''}`}>
       <Link to={`/country/${country}`}>
         <img
           src={banner ? `../countries_flags/${country}.png` : `./countries_flags/${country}.png`}
@@ -17,11 +17,9 @@ const CountryCard = (props) => {
         <h1 className="countryCardName">{country}</h1>
         <p className="countryCardCasesNumber">
           active cases:
-          {/* {infected} */}
-          {console.log(infected)}
           {infected === null ? ' 0' : ` ${infected.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
         </p>
-        See all country statistics
+        {banner ? '' : 'See all country statistics'}
       </Link>
     </div>
   );
