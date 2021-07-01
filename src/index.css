@@ -105,7 +105,7 @@ code {
 }
 
 .countryCard {
-  width: 23%;
+  width: 20%;
   cursor: pointer;
   margin-top: 2vh;
   background-color: blanchedalmond;
@@ -115,6 +115,24 @@ code {
   -moz-transition: all 0.25s linear;
   -o-transition: all 0.25s linear;
   transition: all 0.25s linear;
+}
+
+@media only screen and (max-width: 1200px) {
+  .countryCard {
+    width: 25%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .countryCard {
+    width: 43%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .countryCard {
+    width: 90%;
+  }
 }
 
 .countryCard:hover {
