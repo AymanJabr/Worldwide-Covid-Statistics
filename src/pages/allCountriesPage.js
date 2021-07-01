@@ -27,7 +27,6 @@ const AllCountriesPage = ({ statistics }) => {
     <div className="allCountriesPage">
       <SearchBar searchCountry={searchByCountry} />
       <div className="allCountriesContainer">
-        {console.log(myStatistics)}
         {myStatistics.length > 0 ? myStatistics.map((stat) => (
           <CountryCard
             key={stat.country}

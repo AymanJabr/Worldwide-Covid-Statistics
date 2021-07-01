@@ -17,7 +17,9 @@ const CountryCard = (props) => {
         <h1 className="countryCardName">{country}</h1>
         <p className="countryCardCasesNumber">
           active cases:
-          {` ${infected.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
+          {/* {infected} */}
+          {console.log(infected)}
+          {infected === null ? ' 0' : ` ${infected.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
         </p>
         See all country statistics
       </Link>
@@ -33,7 +35,7 @@ CountryCard.propTypes = {
 
 CountryCard.defaultProps = {
   country: null,
-  infected: null,
+  infected: 0,
   banner: false,
 };
 
