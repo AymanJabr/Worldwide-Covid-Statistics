@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import store from '../store';
@@ -6,20 +6,28 @@ import { actionUpdate } from '../actions';
 import CountryCard from '../components/countryCard';
 import getItems from '../APIs/apify';
 import SearchBar from '../components/searchBar';
+import '../index.css';
 
 const AllCountriesPage = ({ statistics }) => {
+  const [myStatistics, setMyStatistics] = useState(statistics);
+
   useEffect(() => {
     getItems().then((newStatistics) => {
       store.dispatch(actionUpdate(newStatistics));
+      setMyStatistics(newStatistics);
     });
   }, []);
 
+  const searchByCountry = (e) => {
+    const newStatistics = statistics.filter((stat) => stat.country.search(e.target.value) !== -1);
+    setMyStatistics(newStatistics);
+  };
+
   return (
     <div className="allCountriesPage">
-      <SearchBar />
+      <SearchBar searchCountry={searchByCountry} />
       <div className="allCountriesContainer">
-        {console.log(statistics)}
-        {statistics.length > 0 ? statistics.map((stat) => (
+        {myStatistics.length > 0 ? myStatistics.map((stat) => (
           <CountryCard
             key={stat.country}
             country={stat.country}

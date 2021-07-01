@@ -4,7 +4,7 @@ function Header() {
   return (
     <div className="Header">
       <div className="Navigation ">
-        <Link to="/">All Countries  </Link>
+        <Link to="/">Go back to all countries  </Link>
       </div>
 
     </div>

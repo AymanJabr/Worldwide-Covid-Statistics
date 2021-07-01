@@ -1,19 +1,54 @@
 body {
   margin: 0;
   font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    "Roboto",
-    "Oxygen",
-    "Ubuntu",
-    "Cantarell",
-    "Fira Sans",
-    "Droid Sans",
-    "Helvetica Neue",
-    sans-serif;
+    source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Courier New",
+    monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin-right: 10vw;
+  margin-left: 10vw;
+  margin-bottom: 10vh;
+}
+
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
+}
+
+.SearchBar {
+  margin-top: 3vh;
+  position: relative;
+  display: flex;
+  min-width: 100px;
+}
+
+.SearchIcon {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 14px;
+}
+
+.Search {
+  border: 1px solid grey;
+  border-radius: 5px;
+  height: 25px;
+  width: 100%;
+  padding: 2px 23px 2px 30px;
+  outline: 0;
+  background-color: rgba(253, 242, 224, 0.644);
+}
+
+.Search:hover,
+.Search:focus {
+  border: 1px solid #009688;
+  background-color: white;
 }
 
 code {
@@ -30,16 +65,14 @@ code {
   color: black;
 }
 
-.bannerCountry {
-  color: black;
-}
-
 .allCountriesText {
   color: black;
 }
 
 .allCountriesContainer {
-  color: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .singleCountryPage {
@@ -47,11 +80,16 @@ code {
 }
 
 .countryAllExtraContainer {
-  color: black;
+  display: inline-block;
 }
 
 .countryExtraContainer {
-  color: black;
+  display: inline-block;
+  background-color: blanchedalmond;
+  margin-top: 2vh;
+  margin-right: 2vw;
+  padding: 15px;
+  border-radius: 7px;
 }
 
 .extraInfoNumber {
@@ -63,11 +101,58 @@ code {
 }
 
 .countryCard {
-  color: black;
+  width: 20%;
+  cursor: pointer;
+  margin-top: 2vh;
+  background-color: blanchedalmond;
+  padding: 10px;
+  border-radius: 7px;
+  -webkit-transition: all 0.25s linear;
+  -moz-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+@media only screen and (max-width: 1200px) {
+  .countryCard {
+    width: 25%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .countryCard {
+    width: 43%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .countryCard {
+    width: 90%;
+  }
+}
+
+.bannerCountry {
+  width: 70%;
+  display: block;
+
+  /* margin-left: auto;
+  margin-right: auto; */
+}
+
+.countryCard:hover {
+  border-radius: 10px;
+  border: 1px solid rgba(164, 159, 235, 0.347);
+  -webkit-box-shadow: 0 11px 35px -7px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 11px 35px -7px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 11px 35px -7px rgba(0, 0, 0, 0.75);
+  transform: scale(1.1) translateX(-1vw);
 }
 
 .countryCardImage {
-  color: black;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
 }
 
 .countryCardName {
@@ -80,4 +165,18 @@ code {
 
 .statisticsGraph {
   color: black;
+}
+
+.Navigation {
+  margin-top: 2vh;
+  background-color: blanchedalmond;
+  padding: 10px;
+  border-radius: 7px;
+  font-family:
+    source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Courier New",
+    monospace;
 }

@@ -1,25 +1,49 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import CountryCard from '../components/countryCard';
-import StatisticsGraph from '../components/statisticsGraph';
 import Header from '../components/header';
 
-const SingleCountryPage = () => {
+const SingleCountryPage = ({ statistics }) => {
   const { country } = useParams();
+  const [infected, setInfected] = useState(-1);
+  const [deceased, setDeceased] = useState(-1);
+  const [recovered, setRecovered] = useState(-1);
+
+  useEffect(() => {
+    const myCountry = statistics.filter((statistic) => statistic.country === country);
+    setInfected(myCountry[0].infected);
+    setDeceased(myCountry[0].deceased);
+    setRecovered(myCountry[0].recovered);
+  }, []);
 
   return (
     <div className="singleCountryPage">
       <Header />
 
-      {console.log(country)}
+      <CountryCard
+        banner
+        country={country}
+        deceased={deceased}
+        infected={infected}
+        recovered={recovered}
+      />
 
-      <h1>Go back to All Countries Statistics</h1>
-      <CountryCard className="bannerCountry" />
-      <StatisticsGraph />
       <div className="countryAllExtraContainer">
 
         <div className="countryExtraContainer">
-          <h1 className="extraInfoNumber">9999</h1>
-          <p className="extraInfoText">some information</p>
+          <p className="extraInfoText">recovered</p>
+          <h1 className="extraInfoNumber">
+            {` ${recovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
+          </h1>
+        </div>
+
+        <div className="countryExtraContainer">
+          <p className="extraInfoText">deceased</p>
+          <h1 className="extraInfoNumber">
+            {` ${deceased.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
+          </h1>
         </div>
 
       </div>
@@ -28,4 +52,10 @@ const SingleCountryPage = () => {
   );
 };
 
-export default SingleCountryPage;
+SingleCountryPage.propTypes = {
+  statistics: PropTypes.instanceOf(Array).isRequired,
+};
+
+const mapStateToProps = (state) => ({ statistics: state.statisticsReducer.statistics });
+
+export default connect(mapStateToProps)(SingleCountryPage);
