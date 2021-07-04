@@ -4,9 +4,11 @@ In this project I created a simple application that uses data from the Apify COV
 
 This project makes use of the Redux store with React to efficiently update data, the data is updated every hour.
 
-# To be updated
+# API Setup
 
-The project is being tested using Jest
+In order to get access to the an API Token, visit https://apify.com/petrpatek/covid-19-aggregator/api. Follow the instruction to get a personalized API Token.
+
+In the root folder of your project, create a `.env` file. Inside this file add `REACT_APP_API_TOKEN = 'Your_API_Token'`
 
 # To be updated
 
@@ -34,9 +36,7 @@ To get a local copy up and running follow these steps.
 
 ## Testing
 
-Testing has been done using jest, both unit tests and integration tests are included in this project and can be run using `npm test`.
-
-# To be updated
+Testing has been done using jest snapshots to test components, run using `npm test`.
 
 ## AUTHORS
 
