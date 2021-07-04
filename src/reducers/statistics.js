@@ -1,16 +1,25 @@
-import { GET_UPDATED_STATISTICS } from '../actions/index';
+import { GET_UPDATED_COUNTRIES_STATISTICS, GET_UPDATED_WORLD_STATISTICS } from '../actions/index';
 
 const initialState = {
-  statistics: [],
+  worldwide: {},
+  countries: [],
 };
 
 export default function statisticsReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_UPDATED_STATISTICS:
+    case GET_UPDATED_WORLD_STATISTICS:
 
       return {
-        statistics:
-          action.statistics,
+        worldwide:
+          action.worldwide,
+
+      };
+
+    case GET_UPDATED_COUNTRIES_STATISTICS:
+
+      return {
+        countries:
+          action.countries,
 
       };
 
