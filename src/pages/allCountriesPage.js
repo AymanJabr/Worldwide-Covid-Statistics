@@ -19,8 +19,9 @@ const AllCountriesPage = ({ worldwide, countries }) => {
       console.log('worldwide stats:', stats);
     }).then(() => {
       getAllCountries().then((stats) => {
-        store.dispatch(actionUpdateCountries(stats));
-        setCountriesStats(stats);
+        const filteredStats = stats.filter((stat) => stat.activeCases > 0);
+        store.dispatch(actionUpdateCountries(filteredStats));
+        setCountriesStats(filteredStats);
         console.log('countries stats:', stats);
       });
     });

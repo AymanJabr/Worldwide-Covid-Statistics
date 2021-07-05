@@ -9,11 +9,7 @@ const getAllCountries = async () => {
     },
   });
 
-  // console.log(results);
-
   const countries = await results.json();
-
-  // console.log(countries);
 
   return countries;
 };
@@ -28,11 +24,7 @@ const getWorldwideStats = async () => {
       },
     });
 
-    // console.log(results);
-
     const stats = await results.json();
-
-    // console.log(stats);
 
     return stats;
   } catch (error) {
@@ -40,8 +32,5 @@ const getWorldwideStats = async () => {
     return error;
   }
 };
-
-// getAllCountries().then((countries) => console.log(countries))
-// getWorldwideStats().then((stats) => console.log(stats))
 
 export { getWorldwideStats, getAllCountries };
