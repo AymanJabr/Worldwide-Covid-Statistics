@@ -1,19 +1,45 @@
 const fetch = require('node-fetch');
 
 const getAllCountries = async () => {
+  const results = await fetch('https://api.coronatracker.com/v3/stats/worldometer/country?countryCode=', {
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    },
+  });
 
-  const results = await fetch("http://api.coronatracker.com/v3/stats/worldometer/country?countryCode=")
-  const countries = await results.json()
+  // console.log(results);
 
-  return countries
+  const countries = await results.json();
+
+  // console.log(countries);
+
+  return countries;
 };
 
 const getWorldwideStats = async () => {
-  const results = await fetch("http://api.coronatracker.com/v3/stats/worldometer/global")
-  const stats = await results.json()
+  try {
+    const results = await fetch('https://api.coronatracker.com/v3/stats/worldometer/global', {
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    });
 
-  return stats
-}
+    // console.log(results);
+
+    const stats = await results.json();
+
+    // console.log(stats);
+
+    return stats;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
 
 // getAllCountries().then((countries) => console.log(countries))
 // getWorldwideStats().then((stats) => console.log(stats))

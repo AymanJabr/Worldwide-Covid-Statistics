@@ -6,7 +6,6 @@ export const actionUpdateWorldwide = (worldwide) => ({
   worldwide,
 });
 
-
 export const actionUpdateCountries = (countries) => ({
   type: GET_UPDATED_COUNTRIES_STATISTICS,
   countries,

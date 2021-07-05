@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 const CountryCard = (props) => {
   const {
-    country, infected, banner, worldwide, deceased, recovered, newCases, newDeaths, casesPerMillion, lastUpdate
+    country, infected, banner, worldwide, deceased,
+    recovered, newCases, newDeaths, casesPerMillion, lastUpdate,
   } = props;
 
   return (
@@ -21,15 +22,35 @@ const CountryCard = (props) => {
         </p>
         {banner ? '' : 'See all country statistics'}
 
-        {worldwide ? <div>
-          <p>Worldwide Total Deaths: {deceased}</p>
-          <p>Worldwide Total Recovered: {recovered}</p>
-          <p>New cases today: {newCases}</p>
-          <p>New deaths today: {newDeaths}</p>
-          <p>Number of cases per million people: {casesPerMillion}</p>
-          <p>This data was last updated: {lastUpdate}</p>
+        {worldwide ? (
+          <div>
+            <p>
+              Worldwide Total Deaths:
+              {deceased}
+            </p>
+            <p>
+              Worldwide Total Recovered:
+              {recovered}
+            </p>
+            <p>
+              New cases today:
+              {newCases}
+            </p>
+            <p>
+              New deaths today:
+              {newDeaths}
+            </p>
+            <p>
+              Number of cases per million people:
+              {casesPerMillion}
+            </p>
+            <p>
+              This data was last updated:
+              {lastUpdate}
+            </p>
 
-        </div> :''}
+          </div>
+        ) : ''}
       </Link>
     </div>
   );
@@ -45,7 +66,7 @@ CountryCard.propTypes = {
   newCases: PropTypes.number,
   newDeaths: PropTypes.number,
   casesPerMillion: PropTypes.number,
-  lastUpdate: PropTypes.instanceOf(Date)
+  lastUpdate: PropTypes.instanceOf(Date),
 };
 
 CountryCard.defaultProps = {

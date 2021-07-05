@@ -13,45 +13,44 @@ const AllCountriesPage = ({ worldwide, countries }) => {
   const [countriesStats, setCountriesStats] = useState(countries);
 
   useEffect(() => {
-
     getWorldwideStats().then((stats) => {
-      store.dispatch(actionUpdateWorldwide(stats))
-      setWorldwideStats(stats)
+      store.dispatch(actionUpdateWorldwide(stats));
+      setWorldwideStats(stats);
+      console.log('worldwide stats:', stats);
     }).then(() => {
-      getAllCountries((stats) => {
-        store.dispatch(actionUpdateCountries(stats))
-        setCountriesStats(stats)
-      })
-    })
-
-    // getItems().then((newStatistics) => {
-    //   const newSortedStatistics = newStatistics.sort((a, b) => b.infected - a.infected);
-    //   store.dispatch(actionUpdate(newSortedStatistics));
-    //   setMyStatistics(newSortedStatistics);
-    // });
+      getAllCountries().then((stats) => {
+        store.dispatch(actionUpdateCountries(stats));
+        setCountriesStats(stats);
+        console.log('countries stats:', stats);
+      });
+    });
   }, []);
 
   const searchByCountry = (e) => {
-    const newStatistics = statistics.filter((stat) => stat.country.search(e.target.value) !== -1);
-    setMyStatistics(newStatistics);
+    const newStatistics = countriesStats.filter(
+      (stat) => stat.country.search(e.target.value) !== -1,
+    );
+    setCountriesStats(newStatistics);
   };
 
   return (
     <div className="allCountriesPage">
       <SearchBar searchCountry={searchByCountry} />
 
-      {countriesStats.length > 0 ?<CountryCard
-        banner
-        worldwide
-        country="worldwide"
-        infected={worldwideStats.totalActiveCases}
-        deceased={worldwideStats.totalDeaths}
-        recovered={worldwideStats.totalRecovered}
-        newCases={worldwideStats.totalNewCases}
-        newDeaths={worldwideStats.totalNewDeaths}
-        casesPerMillion={worldwideStats.totalCasesPerMillion}
-        lastUpdated={worldwideStats.lastUpdated}
-      /> : ''}
+      {countriesStats.length > 0 ? (
+        <CountryCard
+          banner
+          worldwide
+          country="worldwide"
+          infected={worldwideStats.totalActiveCases}
+          deceased={worldwideStats.totalDeaths}
+          recovered={worldwideStats.totalRecovered}
+          newCases={worldwideStats.totalNewCases}
+          newDeaths={worldwideStats.totalNewDeaths}
+          casesPerMillion={worldwideStats.totalCasesPerMillion}
+          lastUpdated={worldwideStats.lastUpdated}
+        />
+      ) : ''}
 
       <div className="allCountriesContainer">
         {countriesStats.length > 0 ? countriesStats.map((stat) => (
@@ -68,12 +67,12 @@ const AllCountriesPage = ({ worldwide, countries }) => {
 
 AllCountriesPage.propTypes = {
   countries: PropTypes.instanceOf(Array).isRequired,
-  worldwide: PropTypes.object.isRequired
+  worldwide: PropTypes.instanceOf(Object).isRequired,
 };
 
 const mapStateToProps = (state) => ({
   worldwide: state.statisticsReducer.worldwide,
-  countries: state.statisticsReducer.countries
+  countries: state.statisticsReducer.countries,
 });
 
 export default connect(mapStateToProps)(AllCountriesPage);
