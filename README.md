@@ -1,13 +1,12 @@
 # COVID-19 Statistics
 
-In this project I created a simple application that uses data from the Apify Corona Tracker API: https://documenter.getpostman.com/view/11073859/Szmcbeho?version=latest#62abe4b7-eb2c-46d5-ac3f-5764f0fd4f16 in order to show information on the number of active cases by country.
+In this project I created a simple application that uses data from the Corona-Tracker API: https://documenter.getpostman.com/view/11073859/Szmcbeho?version=latest#62abe4b7-eb2c-46d5-ac3f-5764f0fd4f16 in order to show information on the number of active cases by country.
 
 This project makes use of the Redux store with React to efficiently update data, the data is updated every hour.
 
+# Live version
 
-# To be updated
-
-See Live version of app [here](https://project-bookstore-cms.herokuapp.com/)
+See Live version of app [here](https://worldwide-covid-statistics.netlify.app/)
 
 ## Built With
 
