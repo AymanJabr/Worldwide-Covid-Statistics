@@ -2,50 +2,76 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import store from '../store';
-import { actionUpdate } from '../actions';
+import { actionUpdateCountries, actionUpdateWorldwide } from '../actions';
 import CountryCard from '../components/countryCard';
-import getItems from '../APIs/apify';
+import WorldwideCard from '../components/worldwideCard';
+import { getWorldwideStats, getAllCountries } from '../APIs/corona-tracker';
 import SearchBar from '../components/searchBar';
 import '../index.css';
 
-const AllCountriesPage = ({ statistics }) => {
-  const [myStatistics, setMyStatistics] = useState(statistics);
+const AllCountriesPage = ({ worldwide, countries }) => {
+  const [worldwideStats, setWorldwideStats] = useState(worldwide);
+  const [countriesStats, setCountriesStats] = useState(countries);
 
   useEffect(() => {
-    getItems().then((newStatistics) => {
-      const newSortedStatistics = newStatistics.sort((a, b) => b.infected - a.infected);
-      store.dispatch(actionUpdate(newSortedStatistics));
-      setMyStatistics(newSortedStatistics);
+    getWorldwideStats().then((stats) => {
+      store.dispatch(actionUpdateWorldwide(stats));
+      setWorldwideStats(stats);
+    }).then(() => {
+      getAllCountries().then((stats) => {
+        const filteredStats = stats.filter((stat) => stat.activeCases > 0);
+        store.dispatch(actionUpdateCountries(filteredStats));
+        setCountriesStats(filteredStats);
+      });
     });
   }, []);
 
   const searchByCountry = (e) => {
-    const newStatistics = statistics.filter((stat) => stat.country.search(e.target.value) !== -1);
-    setMyStatistics(newStatistics);
+    const newStatistics = countries.filter(
+      (stat) => stat.country.search(e.target.value) !== -1,
+    );
+    const filteredStats = newStatistics.filter((stat) => stat.activeCases > 0);
+    setCountriesStats(filteredStats);
   };
 
   return (
     <div className="allCountriesPage">
       <SearchBar searchCountry={searchByCountry} />
+
+      {countriesStats.length > 0 ? (
+
+        <WorldwideCard
+          infected={worldwideStats.totalActiveCases}
+          deceased={worldwideStats.totalDeaths}
+          recovered={worldwideStats.totalRecovered}
+          newCases={worldwideStats.totalNewCases}
+          newDeaths={worldwideStats.totalNewDeaths}
+          casesPerMillion={worldwideStats.totalCasesPerMillionPop}
+          lastUpdated={worldwideStats.created}
+        />
+      ) : ''}
+
       <div className="allCountriesContainer">
-        {myStatistics.length > 0 ? myStatistics.map((stat) => (
+        {countriesStats.length > 0 ? countriesStats.map((stat) => (
           <CountryCard
             key={stat.country}
             country={stat.country}
-            infected={stat.infected}
-            deceased={stat.deceased}
-            recovered={stat.recovered}
+            infected={stat.activeCases}
           />
-        )) : <h1>Loading most recent data....</h1> }
+        )) : <h1>Loading most recent data....</h1>}
       </div>
     </div>
   );
 };
 
 AllCountriesPage.propTypes = {
-  statistics: PropTypes.instanceOf(Array).isRequired,
+  countries: PropTypes.instanceOf(Array).isRequired,
+  worldwide: PropTypes.instanceOf(Object).isRequired,
 };
 
-const mapStateToProps = (state) => ({ statistics: state.statisticsReducer.statistics });
+const mapStateToProps = (state) => ({
+  worldwide: state.statisticsReducer.worldwide,
+  countries: state.statisticsReducer.countries,
+});
 
 export default connect(mapStateToProps)(AllCountriesPage);

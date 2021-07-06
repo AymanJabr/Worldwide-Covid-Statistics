@@ -1,14 +1,9 @@
 # COVID-19 Statistics
 
-In this project I created a simple application that uses data from the Apify COVID-19 aggregator API: https://apify.com/petrpatek/covid-19-aggregator/api in order to show information on the number of active cases by country.
+In this project I created a simple application that uses data from the Apify Corona Tracker API: https://documenter.getpostman.com/view/11073859/Szmcbeho?version=latest#62abe4b7-eb2c-46d5-ac3f-5764f0fd4f16 in order to show information on the number of active cases by country.
 
 This project makes use of the Redux store with React to efficiently update data, the data is updated every hour.
 
-# API Setup
-
-In order to get access to the an API Token, visit https://apify.com/petrpatek/covid-19-aggregator/api. Follow the instruction to get a personalized API Token.
-
-In the root folder of your project, create a `.env` file. Inside this file add `REACT_APP_API_TOKEN = 'Your_API_Token'`
 
 # To be updated
 
@@ -38,7 +33,7 @@ To get a local copy up and running follow these steps.
 
 Testing has been done using jest snapshots to test components, run using `npm test`.
 
-## AUTHORS
+## AUTHOR
 
 **AYMAN JABR**
 
