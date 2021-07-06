@@ -16,10 +16,14 @@ exports[`CountryCard renders correctly 1`] = `
       className="countryCardName"
     />
     <p
-      className="countryCardCasesNumber"
+      className="countryCardCases"
     >
       active cases:
-       0
+      <span
+        className="countryCardCasesNumber"
+      >
+         0
+      </span>
     </p>
     See all country statistics
   </Link>
@@ -59,5 +63,97 @@ exports[`SearchBar renders correctly 1`] = `
     placeholder="Search country"
     type="text"
   />
+</div>
+`;
+
+exports[`WorldwideCard renders correctly 1`] = `
+<div
+  className="worldwideContainer"
+>
+  <img
+    alt="worldwide"
+    className="worldwideImage"
+    src="./countries_flags/worldwide.png"
+  />
+  <div
+    className="worldwideDataContainer"
+  >
+    <h1
+      className="dataTitle"
+    >
+      Worldwide Statistics:
+    </h1>
+    <p
+      className="worldwideData"
+    >
+      Current Active cases:
+       
+      <span
+        className="worldwideDataNumber"
+      >
+         0
+      </span>
+    </p>
+    <p
+      className="worldwideData"
+    >
+      Worldwide Total Deaths:
+      <span
+        className="worldwideDataNumber"
+      >
+        0
+      </span>
+    </p>
+    <p
+      className="worldwideData"
+    >
+      Worldwide Total Recovered:
+      <span
+        className="worldwideDataNumber"
+      >
+        0
+      </span>
+    </p>
+    <p
+      className="worldwideData"
+    >
+      New cases today:
+      <span
+        className="worldwideDataNumber"
+      >
+        0
+      </span>
+    </p>
+    <p
+      className="worldwideData"
+    >
+      New deaths today:
+      <span
+        className="worldwideDataNumber"
+      >
+        0
+      </span>
+    </p>
+    <p
+      className="worldwideData"
+    >
+      Number of cases per million people:
+      <span
+        className="worldwideDataNumber"
+      >
+        0
+      </span>
+    </p>
+    <p
+      className="worldwideData"
+    >
+      This data was last updated:
+      <span
+        className="worldwideDataNumber"
+      >
+        NaN-NaN-NaN NaN:NaN:NaN UTC
+      </span>
+    </p>
+  </div>
 </div>
 `;
