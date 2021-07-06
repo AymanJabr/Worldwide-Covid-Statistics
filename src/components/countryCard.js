@@ -15,9 +15,11 @@ const CountryCard = (props) => {
           alt={`${country}`}
         />
         <h1 className="countryCardName">{country}</h1>
-        <p className="countryCardCasesNumber">
+        <p className="countryCardCases">
           active cases:
-          {infected === null ? ' 0' : ` ${infected.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
+          <span className="countryCardCasesNumber">
+            {infected === null ? ' 0' : ` ${infected.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
+          </span>
         </p>
         {banner ? '' : 'See all country statistics'}
 

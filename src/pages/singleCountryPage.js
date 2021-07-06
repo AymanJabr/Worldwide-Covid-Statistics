@@ -42,7 +42,7 @@ const SingleCountryPage = ({ countries }) => {
 
         <div className="countryExtraContainer">
           <p className="extraInfoText">Country&apos;s coordinates: </p>
-          <h1 className="extraInfoNumber">
+          <span className="extraInfoNumber">
             latitude:
             {' '}
             {lat}
@@ -51,44 +51,44 @@ const SingleCountryPage = ({ countries }) => {
             longitude:
             {' '}
             {lng}
-          </h1>
+          </span>
         </div>
 
         <div className="countryExtraContainer">
-          <p className="extraInfoText">recovered</p>
-          <h1 className="extraInfoNumber">
+          <p className="extraInfoText">Recovered</p>
+          <span className="extraInfoNumber">
             {` ${recovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
-          </h1>
+          </span>
         </div>
 
         <div className="countryExtraContainer">
-          <p className="extraInfoText">deceased</p>
-          <h1 className="extraInfoNumber">
+          <p className="extraInfoText">Deceased</p>
+          <span className="extraInfoNumber">
             {` ${deceased.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
-          </h1>
+          </span>
         </div>
 
         <div className="countryExtraContainer">
           <p className="extraInfoText">Today&apos;s new cases</p>
-          <h1 className="extraInfoNumber">
+          <span className="extraInfoNumber">
             {` ${newCases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
-          </h1>
+          </span>
         </div>
 
         <div className="countryExtraContainer">
           <p className="extraInfoText">Today&apos;s new deaths</p>
-          <h1 className="extraInfoNumber">
+          <span className="extraInfoNumber">
             {` ${newDeaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
-          </h1>
+          </span>
         </div>
 
         <div className="countryExtraContainer">
           <p className="extraInfoText">This information was last updated: </p>
-          <h1 className="extraInfoNumber">
+          <span className="extraInfoNumber">
 
             {`${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()} ${date.getUTCHours()}:${date.getUTCMinutes()}:${date.getUTCSeconds()} UTC`}
 
-          </h1>
+          </span>
         </div>
 
       </div>

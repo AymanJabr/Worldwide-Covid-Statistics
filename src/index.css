@@ -92,12 +92,15 @@ code {
   border-radius: 7px;
 }
 
-.extraInfoNumber {
-  color: black;
-}
-
 .extraInfoText {
   color: black;
+  font-size: 1.2rem;
+}
+
+.extraInfoNumber {
+  color: black;
+  font-size: 1.5rem;
+  font-weight: bolder;
 }
 
 .countryCard {
@@ -116,6 +119,10 @@ code {
 @media only screen and (max-width: 1200px) {
   .countryCard {
     width: 25%;
+  }
+
+  .worldwideContainer {
+    flex-direction: column;
   }
 }
 
@@ -159,8 +166,14 @@ code {
   color: black;
 }
 
-.countryCardCasesNumber {
+.countryCardCases {
   color: black;
+  font-size: 1.1rem;
+}
+
+.countryCardCasesNumber {
+  font-size: 1.3rem;
+  font-weight: bolder;
 }
 
 .statisticsGraph {
@@ -179,4 +192,28 @@ code {
     Consolas,
     "Courier New",
     monospace;
+}
+
+.worldwideContainer {
+  display: flex;
+  margin-top: 3vh;
+  margin-bottom: 2vh;
+}
+
+.worldwideImage {
+  width: 55%;
+  border-radius: 5%;
+}
+
+.worldwideDataContainer {
+  margin-left: 2vw;
+}
+
+.worldwideData {
+  font-size: 1.2rem;
+}
+
+.worldwideDataNumber {
+  font-size: 1.5rem;
+  font-weight: bolder;
 }

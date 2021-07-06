@@ -9,42 +9,70 @@ const WorldwideCard = (props) => {
   const myDate = new Date(lastUpdated);
 
   return (
-    <div className="bannerCountry">
+    <div className="worldwideContainer">
       <img
+        className="worldwideImage"
         src="./countries_flags/worldwide.png"
-        className="countryCardImage"
         alt="worldwide"
       />
-      <h1 className="countryCardName">Worldwide</h1>
-      <p className="countryCardCasesNumber">
-        active cases:
-        {infected === null ? ' 0' : ` ${infected.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
-      </p>
 
-      <div>
-        <p>
+      <div className="worldwideDataContainer">
+        <h1 className="dataTitle">Worldwide Statistics:</h1>
+        <p className="worldwideData">
+          Current Active cases:
+          {' '}
+          <span className="worldwideDataNumber">
+            {infected === null ? ' 0' : ` ${infected.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
+          </span>
+
+        </p>
+
+        <p className="worldwideData">
           Worldwide Total Deaths:
-          {deceased.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+          <span className="worldwideDataNumber">
+            {deceased.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+          </span>
+
         </p>
-        <p>
+        <p className="worldwideData">
           Worldwide Total Recovered:
-          {recovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+
+          <span className="worldwideDataNumber">
+            {recovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+          </span>
+
         </p>
-        <p>
+        <p className="worldwideData">
           New cases today:
-          {newCases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+
+          <span className="worldwideDataNumber">
+            {newCases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+          </span>
+
         </p>
-        <p>
+        <p className="worldwideData">
           New deaths today:
-          {newDeaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+
+          <span className="worldwideDataNumber">
+            {newDeaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+          </span>
+
         </p>
-        <p>
+        <p className="worldwideData">
           Number of cases per million people:
-          {casesPerMillion.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+
+          <span className="worldwideDataNumber">
+            {casesPerMillion.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+          </span>
+
         </p>
-        <p>
+        <p className="worldwideData">
           This data was last updated:
-          {`${myDate.getUTCFullYear()}-${myDate.getUTCMonth() + 1}-${myDate.getUTCDate()} ${myDate.getUTCHours()}:${myDate.getUTCMinutes()}:${myDate.getUTCSeconds()} UTC`}
+
+          <span className="worldwideDataNumber">
+            {`${myDate.getUTCFullYear()}-${myDate.getUTCMonth() + 1}-${myDate.getUTCDate()} ${myDate.getUTCHours()}:${myDate.getUTCMinutes()}:${myDate.getUTCSeconds()} UTC`}
+          </span>
+
         </p>
 
       </div>
