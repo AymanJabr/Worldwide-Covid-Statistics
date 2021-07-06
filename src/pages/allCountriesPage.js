@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import store from '../store';
 import { actionUpdateCountries, actionUpdateWorldwide } from '../actions';
 import CountryCard from '../components/countryCard';
+import WorldwideCard from '../components/worldwideCard';
 import { getWorldwideStats, getAllCountries } from '../APIs/corona-tracker';
 import SearchBar from '../components/searchBar';
 import '../index.css';
@@ -37,20 +38,16 @@ const AllCountriesPage = ({ worldwide, countries }) => {
     <div className="allCountriesPage">
       <SearchBar searchCountry={searchByCountry} />
 
-      {console.log(worldwideStats)}
       {countriesStats.length > 0 ? (
 
-        <CountryCard
-          banner
-          worldwide
-          country="worldwide"
+        <WorldwideCard
           infected={worldwideStats.totalActiveCases}
           deceased={worldwideStats.totalDeaths}
           recovered={worldwideStats.totalRecovered}
           newCases={worldwideStats.totalNewCases}
           newDeaths={worldwideStats.totalNewDeaths}
-          casesPerMillion={worldwideStats.totalCasesPerMillion}
-          lastUpdated={worldwideStats.lastUpdated}
+          casesPerMillion={worldwideStats.totalCasesPerMillionPop}
+          lastUpdated={worldwideStats.created}
         />
       ) : ''}
 

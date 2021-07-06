@@ -14,7 +14,7 @@ const SingleCountryPage = ({ countries }) => {
   const [lng, setLongitude] = useState(-1);
   const [newCases, setNewCases] = useState(-1);
   const [newDeaths, setNewDeaths] = useState(-1);
-  const [lastUpdated, setLastUpdated] = useState(-1);
+  const [date, setDate] = useState(new Date());
 
   useEffect(() => {
     const myCountry = countries.filter((statistic) => statistic.country === country);
@@ -25,7 +25,7 @@ const SingleCountryPage = ({ countries }) => {
     setLongitude(myCountry[0].lng);
     setNewCases(myCountry[0].dailyConfirmed);
     setNewDeaths(myCountry[0].dailyDeaths);
-    setLastUpdated(myCountry[0].lastUpdated);
+    setDate(new Date(myCountry[0].lastUpdated));
   }, []);
 
   return (
@@ -85,7 +85,9 @@ const SingleCountryPage = ({ countries }) => {
         <div className="countryExtraContainer">
           <p className="extraInfoText">This information was last updated: </p>
           <h1 className="extraInfoNumber">
-            {lastUpdated}
+
+            {`${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()} ${date.getUTCHours()}:${date.getUTCMinutes()}:${date.getUTCSeconds()} UTC`}
+
           </h1>
         </div>
 
