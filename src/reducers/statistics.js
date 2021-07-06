@@ -10,6 +10,8 @@ export default function statisticsReducer(state = initialState, action) {
     case GET_UPDATED_WORLD_STATISTICS:
 
       return {
+
+        ...state,
         worldwide:
           action.worldwide,
 
@@ -18,6 +20,8 @@ export default function statisticsReducer(state = initialState, action) {
     case GET_UPDATED_COUNTRIES_STATISTICS:
 
       return {
+
+        ...state,
         countries:
           action.countries,
 

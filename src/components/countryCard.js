@@ -66,7 +66,7 @@ CountryCard.propTypes = {
   newCases: PropTypes.number,
   newDeaths: PropTypes.number,
   casesPerMillion: PropTypes.number,
-  lastUpdate: PropTypes.instanceOf(Date),
+  lastUpdate: PropTypes.string,
 };
 
 CountryCard.defaultProps = {

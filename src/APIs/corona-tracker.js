@@ -28,7 +28,6 @@ const getWorldwideStats = async () => {
 
     return stats;
   } catch (error) {
-    console.log(error);
     return error;
   }
 };

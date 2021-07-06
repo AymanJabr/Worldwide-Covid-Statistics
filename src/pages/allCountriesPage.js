@@ -16,29 +16,30 @@ const AllCountriesPage = ({ worldwide, countries }) => {
     getWorldwideStats().then((stats) => {
       store.dispatch(actionUpdateWorldwide(stats));
       setWorldwideStats(stats);
-      console.log('worldwide stats:', stats);
     }).then(() => {
       getAllCountries().then((stats) => {
         const filteredStats = stats.filter((stat) => stat.activeCases > 0);
         store.dispatch(actionUpdateCountries(filteredStats));
         setCountriesStats(filteredStats);
-        console.log('countries stats:', stats);
       });
     });
   }, []);
 
   const searchByCountry = (e) => {
-    const newStatistics = countriesStats.filter(
+    const newStatistics = countries.filter(
       (stat) => stat.country.search(e.target.value) !== -1,
     );
-    setCountriesStats(newStatistics);
+    const filteredStats = newStatistics.filter((stat) => stat.activeCases > 0);
+    setCountriesStats(filteredStats);
   };
 
   return (
     <div className="allCountriesPage">
       <SearchBar searchCountry={searchByCountry} />
 
+      {console.log(worldwideStats)}
       {countriesStats.length > 0 ? (
+
         <CountryCard
           banner
           worldwide
