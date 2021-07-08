@@ -27,8 +27,11 @@ const AllCountriesPage = ({ worldwide, countries }) => {
   }, []);
 
   const searchByCountry = (e) => {
+    const upperCase = e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1);
+
     const newStatistics = countries.filter(
-      (stat) => stat.country.search(e.target.value) !== -1,
+
+      (stat) => stat.country.search(upperCase) !== -1,
     );
     const filteredStats = newStatistics.filter((stat) => stat.activeCases > 0);
     setCountriesStats(filteredStats);
