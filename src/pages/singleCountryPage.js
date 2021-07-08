@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CountryCard from '../components/countryCard';
@@ -29,7 +29,9 @@ const SingleCountryPage = ({ countries }) => {
   }, []);
 
   return (
+
     <div className="singleCountryPage">
+      {countries.length === 0 ? <Redirect to="/" /> : null}
       <Header />
 
       <CountryCard

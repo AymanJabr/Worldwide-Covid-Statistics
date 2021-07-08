@@ -61,6 +61,26 @@ code {
     monospace;
 }
 
+.countryFilterText {
+  display: inline-block;
+  margin-top: 4vh;
+  font-size: 1.1rem;
+}
+
+#filterInfectionNumber {
+  margin-left: 1vw;
+  background-color: rgba(253, 242, 224, 0.644);
+  color: black;
+  padding: 12px;
+  width: 40%;
+  border: none;
+  font-size: 1.2rem;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
 .allCountriesPage {
   color: black;
 }

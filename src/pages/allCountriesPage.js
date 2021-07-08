@@ -9,6 +9,8 @@ import { getWorldwideStats, getAllCountries } from '../APIs/corona-tracker';
 import SearchBar from '../components/searchBar';
 import '../index.css';
 
+const INFECTION_CATEGORIES = ['1,000 <', '1,000 - 10,000', '10,000 - 100,000', '100,000 - 1,000,000', '1,000,000+'];
+
 const AllCountriesPage = ({ worldwide, countries }) => {
   const [worldwideStats, setWorldwideStats] = useState(worldwide);
   const [countriesStats, setCountriesStats] = useState(countries);
@@ -37,9 +39,53 @@ const AllCountriesPage = ({ worldwide, countries }) => {
     setCountriesStats(filteredStats);
   };
 
+  const searchByInfectionNumber = (e) => {
+    const infectionRange = e.target.value;
+    let newStatistics = null;
+    switch (infectionRange) {
+      case '1,000 <':
+        newStatistics = countries.filter((stat) => stat.activeCases < 1000);
+        break;
+
+      case '1,000 - 10,000':
+        newStatistics = countries.filter((stat) => stat.activeCases <= 10000);
+        break;
+
+      case '10,000 - 100,000':
+        newStatistics = countries.filter((stat) => stat.activeCases <= 100000);
+        break;
+
+      case '100,000 - 1,000,000':
+        newStatistics = countries.filter((stat) => stat.activeCases <= 1000000);
+        break;
+
+      case '1,000,000+':
+        newStatistics = countries.filter((stat) => stat.activeCases > 1000000);
+        break;
+
+      default:
+        newStatistics = countries;
+        break;
+    }
+    setCountriesStats(newStatistics);
+  };
+
   return (
     <div className="allCountriesPage">
       <SearchBar searchCountry={searchByCountry} />
+
+      <p className="countryFilterText">Filter countries by number of active cases: </p>
+
+      <select onChange={searchByInfectionNumber} id="filterInfectionNumber">
+        <option value="Any">Any</option>
+        {
+          INFECTION_CATEGORIES.map((value) => (
+            <option value={value} key={value}>
+              {value}
+            </option>
+          ))
+        }
+      </select>
 
       {countriesStats.length > 0 ? (
 
