@@ -8,12 +8,14 @@ import WorldwideCard from '../components/worldwideCard';
 import { getWorldwideStats, getAllCountries } from '../APIs/corona-tracker';
 import SearchBar from '../components/searchBar';
 import '../index.css';
+import Pagination from '../components/pagination';
 
 const INFECTION_CATEGORIES = ['1,000 <', '1,000 - 10,000', '10,000 - 100,000', '100,000 - 1,000,000', '1,000,000+'];
 
 const AllCountriesPage = ({ worldwide, countries }) => {
   const [worldwideStats, setWorldwideStats] = useState(worldwide);
   const [countriesStats, setCountriesStats] = useState(countries);
+  const [pageNumber, setPageNumber] = useState(0)
 
   useEffect(() => {
     getWorldwideStats().then((stats) => {
@@ -23,7 +25,8 @@ const AllCountriesPage = ({ worldwide, countries }) => {
       getAllCountries().then((stats) => {
         const filteredStats = stats.filter((stat) => stat.activeCases > 0);
         store.dispatch(actionUpdateCountries(filteredStats));
-        setCountriesStats(filteredStats);
+        let firstPage = filteredStats.slice(0, pageNumber)
+        setCountriesStats(firstPage);
       });
     });
   }, []);
@@ -70,6 +73,18 @@ const AllCountriesPage = ({ worldwide, countries }) => {
     setCountriesStats(newStatistics);
   };
 
+  const nextPage = () => {
+    let newPageNumber = pageNumber + 1
+    let selectedPage = countries.slice(newPageNumber * 50, (newPageNumber + 1) * 50)
+    setCountriesStats(selectedPage)
+  }
+
+  const previousPage = () => {
+    let newPageNumber = pageNumber - 1
+    let selectedPage = countries.slice(newPageNumber * 50, (newPageNumber + 1) * 50)
+    setCountriesStats(selectedPage)
+  }
+
   return (
     <div className="allCountriesPage">
       <SearchBar searchCountry={searchByCountry} />
@@ -86,6 +101,8 @@ const AllCountriesPage = ({ worldwide, countries }) => {
           ))
         }
       </select>
+
+        <Pagination pageNumber={pageNumber} goToPreviousPage={previousPage}  />
 
       {countriesStats.length > 0 ? (
 
