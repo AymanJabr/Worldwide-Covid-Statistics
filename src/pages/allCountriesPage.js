@@ -15,7 +15,7 @@ const INFECTION_CATEGORIES = ['1,000 <', '1,000 - 10,000', '10,000 - 100,000', '
 const AllCountriesPage = ({ worldwide, countries }) => {
   const [worldwideStats, setWorldwideStats] = useState(worldwide);
   const [countriesStats, setCountriesStats] = useState(countries);
-  const [pageNumber, setPageNumber] = useState(0)
+  const [pageNumber, setPageNumber] = useState(0);
 
   useEffect(() => {
     getWorldwideStats().then((stats) => {
@@ -25,7 +25,7 @@ const AllCountriesPage = ({ worldwide, countries }) => {
       getAllCountries().then((stats) => {
         const filteredStats = stats.filter((stat) => stat.activeCases > 0);
         store.dispatch(actionUpdateCountries(filteredStats));
-        let firstPage = filteredStats.slice(0, pageNumber)
+        const firstPage = filteredStats.slice(0, 50);
         setCountriesStats(firstPage);
       });
     });
@@ -74,18 +74,18 @@ const AllCountriesPage = ({ worldwide, countries }) => {
   };
 
   const nextPage = () => {
-    let newPageNumber = pageNumber + 1
-    let selectedPage = countries.slice(newPageNumber * 50, (newPageNumber + 1) * 50)
-    setCountriesStats(selectedPage)
-    setPageNumber(newPageNumber)
-  }
+    const newPageNumber = pageNumber + 1;
+    const selectedPage = countries.slice(newPageNumber * 50, (newPageNumber + 1) * 50);
+    setCountriesStats(selectedPage);
+    setPageNumber(newPageNumber);
+  };
 
   const previousPage = () => {
-    let newPageNumber = pageNumber - 1
-    let selectedPage = countries.slice(newPageNumber * 50, (newPageNumber + 1) * 50)
-    setCountriesStats(selectedPage)
-    setPageNumber(newPageNumber)
-  }
+    const newPageNumber = pageNumber - 1;
+    const selectedPage = countries.slice(newPageNumber * 50, (newPageNumber + 1) * 50);
+    setCountriesStats(selectedPage);
+    setPageNumber(newPageNumber);
+  };
 
   return (
     <div className="allCountriesPage">
@@ -104,7 +104,12 @@ const AllCountriesPage = ({ worldwide, countries }) => {
         }
       </select>
 
-        <Pagination pageNumber={pageNumber} goToPreviousPage={previousPage} goToNextPage={nextPage} />
+      <Pagination
+        totalPages={countries.length / 50}
+        pageNumber={pageNumber}
+        goToPreviousPage={previousPage}
+        goToNextPage={nextPage}
+      />
 
       {countriesStats.length > 0 ? (
 

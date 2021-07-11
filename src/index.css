@@ -75,7 +75,7 @@ code {
   width: 40%;
   border: none;
   font-size: 1.2rem;
-  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   -webkit-appearance: button;
   appearance: button;
   outline: none;
@@ -232,4 +232,23 @@ code {
 .worldwideDataNumber {
   font-size: 1.5rem;
   font-weight: bolder;
+}
+
+.paginationButton {
+  padding: 6px 10px;
+  margin: 3px;
+  background-color: rgba(253, 242, 224, 0.644);
+  color: black;
+  border-radius: 10%;
+  border-width: 1px;
+}
+
+.paginationButton:hover {
+  cursor: pointer;
+  background-color: blanchedalmond;
+  color: black;
+}
+
+.ninja {
+  display: none;
 }
