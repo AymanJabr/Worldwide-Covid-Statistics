@@ -77,12 +77,14 @@ const AllCountriesPage = ({ worldwide, countries }) => {
     let newPageNumber = pageNumber + 1
     let selectedPage = countries.slice(newPageNumber * 50, (newPageNumber + 1) * 50)
     setCountriesStats(selectedPage)
+    setPageNumber(newPageNumber)
   }
 
   const previousPage = () => {
     let newPageNumber = pageNumber - 1
     let selectedPage = countries.slice(newPageNumber * 50, (newPageNumber + 1) * 50)
     setCountriesStats(selectedPage)
+    setPageNumber(newPageNumber)
   }
 
   return (
@@ -102,7 +104,7 @@ const AllCountriesPage = ({ worldwide, countries }) => {
         }
       </select>
 
-        <Pagination pageNumber={pageNumber} goToPreviousPage={previousPage}  />
+        <Pagination pageNumber={pageNumber} goToPreviousPage={previousPage} goToNextPage={nextPage} />
 
       {countriesStats.length > 0 ? (
 

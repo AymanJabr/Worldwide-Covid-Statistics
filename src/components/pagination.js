@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-function Pagination({pageNumber}) {
+function Pagination({pageNumber, goToPreviousPage, goToNextPage}) {
     return (
         <div className="Pagination">
             <a href="#" class={`previousButton ${pageNumber > 0 ? '':'ninja'}`}>&laquo; Previous</a>
