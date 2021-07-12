@@ -29,7 +29,6 @@ const AllCountriesPage = () => {
         setCountriesStats(firstPage);
       });
     });
-
   }, [dispatch]);
 
   const searchByCountry = (e) => {
