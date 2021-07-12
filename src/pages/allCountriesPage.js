@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import store from '../store';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { actionUpdateCountries, actionUpdateWorldwide } from '../actions';
 import CountryCard from '../components/countryCard';
 import WorldwideCard from '../components/worldwideCard';
@@ -12,24 +10,27 @@ import Pagination from '../components/pagination';
 
 const INFECTION_CATEGORIES = ['1,000 <', '1,000 - 10,000', '10,000 - 100,000', '100,000 - 1,000,000', '1,000,000+'];
 
-const AllCountriesPage = ({ worldwide, countries }) => {
-  const [worldwideStats, setWorldwideStats] = useState(worldwide);
+const AllCountriesPage = () => {
+  const dispatch = useDispatch();
+  const countries = useSelector((state) => state.statisticsReducer.countries);
+  const worldwide = useSelector((state) => state.statisticsReducer.worldwide);
+
   const [countriesStats, setCountriesStats] = useState(countries);
   const [pageNumber, setPageNumber] = useState(0);
 
   useEffect(() => {
     getWorldwideStats().then((stats) => {
-      store.dispatch(actionUpdateWorldwide(stats));
-      setWorldwideStats(stats);
+      dispatch(actionUpdateWorldwide(stats));
     }).then(() => {
       getAllCountries().then((stats) => {
         const filteredStats = stats.filter((stat) => stat.activeCases > 0);
-        store.dispatch(actionUpdateCountries(filteredStats));
+        dispatch(actionUpdateCountries(filteredStats));
         const firstPage = filteredStats.slice(0, 50);
         setCountriesStats(firstPage);
       });
     });
-  }, []);
+
+  }, [dispatch]);
 
   const searchByCountry = (e) => {
     const upperCase = e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1);
@@ -114,13 +115,13 @@ const AllCountriesPage = ({ worldwide, countries }) => {
       {countriesStats.length > 0 ? (
 
         <WorldwideCard
-          infected={worldwideStats.totalActiveCases}
-          deceased={worldwideStats.totalDeaths}
-          recovered={worldwideStats.totalRecovered}
-          newCases={worldwideStats.totalNewCases}
-          newDeaths={worldwideStats.totalNewDeaths}
-          casesPerMillion={worldwideStats.totalCasesPerMillionPop}
-          lastUpdated={worldwideStats.created}
+          infected={worldwide.totalActiveCases}
+          deceased={worldwide.totalDeaths}
+          recovered={worldwide.totalRecovered}
+          newCases={worldwide.totalNewCases}
+          newDeaths={worldwide.totalNewDeaths}
+          casesPerMillion={worldwide.totalCasesPerMillionPop}
+          lastUpdated={worldwide.created}
         />
       ) : ''}
 
@@ -137,14 +138,4 @@ const AllCountriesPage = ({ worldwide, countries }) => {
   );
 };
 
-AllCountriesPage.propTypes = {
-  countries: PropTypes.instanceOf(Array).isRequired,
-  worldwide: PropTypes.instanceOf(Object).isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  worldwide: state.statisticsReducer.worldwide,
-  countries: state.statisticsReducer.countries,
-});
-
-export default connect(mapStateToProps)(AllCountriesPage);
+export default AllCountriesPage;
