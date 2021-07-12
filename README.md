@@ -9,7 +9,6 @@ This project makes use of the Redux store with React to efficiently update data,
 See Live version of app [here](https://worldwide-covid-statistics.netlify.app/)
 
 ## Built With
-
 - Node.js
 - React
 - Redux
