@@ -4,11 +4,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from './reducers';
 
-// const initialState = {
-//     worldwide: {},
-//     countries: [],
-// };
-
 const initialState = {};
 
 const middleware = [thunk];
