@@ -46,6 +46,27 @@ exports[`Header renders correctly 1`] = `
 </div>
 `;
 
+exports[`Pagination renders correctly 1`] = `
+<div
+  className="Pagination"
+>
+  <button
+    className="paginationButton "
+    onClick={[Function]}
+    type="button"
+  >
+    « Previous Page
+  </button>
+  <button
+    className="paginationButton "
+    onClick={[Function]}
+    type="button"
+  >
+    Next Page »
+  </button>
+</div>
+`;
+
 exports[`SearchBar renders correctly 1`] = `
 <div
   className="SearchBar"
